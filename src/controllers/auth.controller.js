@@ -17,13 +17,13 @@ exports.login = async (req, res, next) => {
         });
       }
 
-      if (pass !== result.pass) {
+      if (pass !== result.password) {
         return res.status(401).send({
           message: "Contraseña incorrecta!!!",
         });
       }
       var token = jwt.sign(
-        { name: result.name, role: "operator" },
+        { role: result.rolId },
         process.env.TK_SECRET,
         {
           expiresIn: 60,

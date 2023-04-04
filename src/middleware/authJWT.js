@@ -3,7 +3,7 @@ const { config } = require("dotenv");
 config();
 
 const verifyToken = (req, res, next) => {
-  var token = req.headers["x-access-token"];
+  var token = req.headers["accessToken"];
   if (!token) {
     return res.status(403).send({
       message: "Sin token proporcionado!",
@@ -19,7 +19,7 @@ const verifyToken = (req, res, next) => {
 };
 
 const isOperator = (req, res, next) => {
-  if (req.role === "operator") {
+  if (req.role === "1") {
     next();
     return;
   }
@@ -29,7 +29,7 @@ const isOperator = (req, res, next) => {
 };
 
 const isVisor = (req, res, next) => {
-  if (req.role === "visor") {
+  if (req.role === "2") {
     next();
     return;
   }
@@ -39,7 +39,7 @@ const isVisor = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  if (req.role === "admin") {
+  if (req.role === "3") {
     next();
     return;
   }
