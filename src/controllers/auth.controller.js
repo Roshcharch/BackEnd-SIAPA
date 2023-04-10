@@ -6,8 +6,6 @@ config()
 
 exports.login = async (req, res, next) => {
   const { user, pass } = req.body;
-  console.log("usuario: ",user)
-  console.log("pass: ",pass)
   await account
     .findOne({ where: { name: user } })
     .then((result) => {

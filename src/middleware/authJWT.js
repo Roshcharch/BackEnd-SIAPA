@@ -18,38 +18,6 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-const isOperator = (req, res, next) => {
-  if (req.role === "1") {
-    next();
-    return;
-  }
-  res.status(403).send({
-    message: "Solo operadores!!!",
-  });
-};
-
-const isVisor = (req, res, next) => {
-  if (req.role === "2") {
-    next();
-    return;
-  }
-  res.status(403).send({
-    message: "Solo visores!!!",
-  });
-};
-
-const isAdmin = (req, res, next) => {
-  if (req.role === "3") {
-    next();
-    return;
-  }
-  res.status(403).send({
-    message: "Solo administradores!!!",
-  });
-};
 module.exports = {
   verifyToken,
-  isOperator,
-  isVisor,
-  isAdmin,
 };
