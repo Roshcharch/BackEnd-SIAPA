@@ -1,20 +1,18 @@
 const { Sequelize } = require("sequelize");
 const db = require("../config/db.config");
 
-console.log(db.HOST)
-console.log(db.USER)
-console.log(db.PASSWORD)
-console.log(db.DATABASE)
-console.log(db.DIALECT)
+/**
+ * Instancia para conexión con la base de datos
+ * por medio de Sequelize usando valores externos
+ */
 
-
-const sequelize = new Sequelize(db.DATABASE, db.DBUSER, db.PASSWORD, {
+const sequelize = new Sequelize(db.DATABASE, db.USER, db.PASSWORD, {
   host: db.HOST,
   dialect: db.DIALECT,
-  define:{
-    timestamps: false
+  define: {
+    timestamps: false,
   },
 });
 
-module.exports = {sequelize,
-Sequelize};
+//Exporta la instancia a la bd y el modulo de Sequelize
+module.exports = { sequelize, Sequelize };
