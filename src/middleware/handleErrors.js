@@ -7,7 +7,7 @@ const { check, validationResult } = require("express-validator");
  */
 
 exports.validateUser = [
-  check("user")
+  check("email")
     .notEmpty() //Valida si no es un campo vacio
     .trim() //Para eliminar espacios en blanco
     .matches(/^[^\b\f\n\r\v\\'"]*$/) //Verifica si no contiene alguna secuencia de escape
@@ -39,14 +39,14 @@ exports.validateUser = [
  * modulo express-validator
  */
 exports.validateFields = [
-  check("user")
+  check("login")
     .notEmpty()
     .trim()
     .matches(/^[^\b\f\n\r\v\\'"]*$/)
     .withMessage("Not allowed especial characters")
     .escape()
-    .withMessage("Not allowed html code")
-    .customSanitizer(),
+    .withMessage("Not allowed html code"),
+  // .customSanitizer(),
   check("pass")
     .notEmpty()
     .trim()
@@ -54,7 +54,9 @@ exports.validateFields = [
     .escape()
     .withMessage("Not allowed escape sequences"),
   check("email").notEmpty().isEmail(),
-  check("name").notEmpty(),
+  check("login").notEmpty(),
+  check("idRol").notEmpty(),
+  check("idEstacion").notEmpty(),
   (req, res, next) => {
     //Almacenamiento de los errores posibles generados
     const errors = validationResult(req);

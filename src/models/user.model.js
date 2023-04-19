@@ -1,9 +1,5 @@
 /**
  * Modelo de la tabla usuario para sequelize
- * @param {sequelize} sequelize
- * @param {Sequelize} Sequelize
- * @returns User
- *
  */
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define(
